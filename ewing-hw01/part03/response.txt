@@ -1,0 +1,16 @@
+List three things that surprised you, about the work itself or things the authors mentioned.
+	1) One thing that surprised me was in section 4 where the author mentions a bit about how the real version of malloc works. Checkoway states that a chunk that was previously allocated but has since been freed is placed on the "free list". This differs greatly from my implementation and I would be eager to learn more about how the actual malloc implementations work.
+	2) I am always slightly taken aback by how different the portrayal of hacking is in movies as compared to the real finding of exploits. It is truly remarkable how much research and no doubt trial and error went into this process of discovering and exploiting Iago attacks. And then actual "hack" itself can be done by simply running:
+```
+openssl s_client -connect \
+  localhost:8080 < exploit
+```
+	3) I was surprised at how exploits as complicated as the Iago attacks still rely on the same basic vulnerabilities that we discussed in system security. These attacks relied on return-oriented programming while the article mentioned other attacks that rely on buffer overflow. It is still cool to see how these basic attacks are both still prevalent today but also applicable in so many vulnerabilities.
+
+List three questions the paper raised in your mind.
+	1) As you had mentioned in the Crash Course on System Security course, research on potential vulnerabilities is generally split into two camps. The academics and the hackers. You had mentioned that the academics tend to be more abstract in their exploitation of vulnerabilities while the hackers provide concrete examples. This seems like a very academic research setting but yet it includes very concrete examples of how Iago attacks work and on what software. Is this an exception to that rule or is this not as specific as some hacker exploits would be?
+	2) Why are so many attacks demonstrated without ASLR, if the system has it by default and this paper's model is the "off the shelf" defense mechanism isn't address space layout randomization a viable defense against these Iago attacks?
+	3) Potentially a small and somewhat insignificant point but I am curious nonetheless. The example message that the exploit printed on the user's application was "Hi there!", is this the exploit/vulnerability equivalent to "Hello World!"?
+
+List one thing this paper made you want to learn more about.
+	1) In section two the paper goes into light detail about how the SSL process happens and how replay attacks are prevented. I found this very interesting and would love to learn more about how this cryptography and the mod_ssl process works. I guess I should see Ritsenpart and Yilek [26] as the paper recommends

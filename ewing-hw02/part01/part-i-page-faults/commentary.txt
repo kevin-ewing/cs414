@@ -1,0 +1,14 @@
+Command to run:
+sudo dtrace -s page-faults.d -c ./page-faults > sample-output.txt
+
+In the documentation for the FTB provider probes it lists the first argument of the 
+vm_fault_trap entry probe to be the requested address. Furthermore, the first argument of
+vm_fault_trap return probe is the return value of the kernel function vm_fault_trap() 
+which “KERN_SUCCESS is returned if the page fault is handled: otherwise, a standard error
+specifying why the fault is fatal is returned”. KERN_SUCCESS is 0. Therefore if 0 is the 
+first argument of all vm_fault_trap:return probes that are successful all others failed.
+
+In the sample output we can see that all of the page faults are handled successfully except
+for the last one which returns arg1 = 0x1. This happens when requesting the address 
+0x800a55000 (aka arg1 of the vm_fault_trap:entry) which is outside the mapping created by 
+mmap.

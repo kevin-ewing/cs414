@@ -1,0 +1,17 @@
+Command to run:
+./whither-mmap > sample-output.txt
+
+PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+2831        0x80061e000        0x800641000 rw-   25   25   1   0 ----- df 
+
+The above is the mapping found on lines 9 and 26 is the mapping that contains the 
+mapping created by mmap. We know this for two reasons. First because when we print the 
+pointer to the mmap in sample-output.txt we see that the pointer is to the memory location 
+0x800641000. This pointer is in the range as specified by the example above. 
+Secondly, we also know it is the correct location because after we write to the memory map
+pointer a new page is linked and so the resident page size should increase for the chunk that
+the mmap mapping is in. We see this as well. Before the mmap write the chunk had 25 resident
+pages and 25 private resident pages. After the write and creating of the entry in the TLB 
+the memory map has 26 resident pages and 26 private resident pages. Therefore the ranges 
+of the mapping are 0x80061e000-0x800642000 which is at a slightly lower memory address than
+the heap which is found in the 0x800c00000-0x801400000 range.

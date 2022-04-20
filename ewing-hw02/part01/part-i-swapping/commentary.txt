@@ -1,0 +1,24 @@
+Command to run:
+sudo dtrace -s page-fault-timer.d -c ./swap-this > sample-output.txt
+
+We know that swapping is occurring because the number of paged out pages is increasing
+after we force this swap.
+
+Before forcing the swap:
+        1 swap pager pageins
+        1 swap pager pages paged in
+     2395 swap pager pageouts
+    58886 swap pager pages paged out
+
+After forcing the swap:
+        1 swap pager pageins
+        1 swap pager pages paged in
+     4264 swap pager pageouts
+    92124 swap pager pages paged out
+
+Once we know that the swapping is in fact happening we can turn our attention to the 
+difference in time that it takes for a page to be swapped out as compared to one that
+is not. By viewing the distribution of swapping times by looking at the dtrace 
+quantized output we can see that there is no significant time impact on paging out a
+page. This is slightly surprising however it can also be explained by the techniques
+talked about in the paper we read: translation caching: skip, don't walk

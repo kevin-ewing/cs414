@@ -1,0 +1,57 @@
+What does Linux’s futex_waitv system call do?
+    The new futex_waitv system call is a part of the new futex2 group of system calls as 
+    an improvement to the originals. These system calls allow "userspace to create 
+    performant synchronization mechanisms." What futex_waitv does is that it waits on an 
+    array of futexs (up to 128) and wakes on any of them. If a futex is woken then the 
+    function returns the index of that waked futex. 
+    https://www.kernel.org/doc/html/latest/userspace-api/futex2.html
+    
+    https://en.wikipedia.org/wiki/Futex
+
+
+How does it differ from the existing futex(2) syscall?
+    Futex2 is a followup version of the initial futex syscalls that have the following 
+    improvements: NUMA awareness operations (where NUMA-awareness is allowing the 
+    software to take advantage of separate cores clusters where each core cluster has its
+    own local memory while still letting cores access all memory in the system.), Support
+    for 8, 16, 32 and 64 bit sizes, and finally the futex2 will allow waiting on multiple 
+    futexes (as we are looking at with futex_waitv)
+
+
+    http://docs.adaptivecomputing.com/torque/6-0-0/Content/topics/torque/11-Using%20
+    NUMA/NUMAawareTorque.htm#:~:text=The%20NUMA%2Daware%20architecture%20is,all%20m
+    emory%20in%20the%20system.
+
+    https://lpc.events/event/11/contributions/1058/attachments/788/1481/futex_lpc2021.pdf
+
+
+
+What software is expected to immediately make use of futex_waitv and for what purpose?
+    Wine and Proton are expected to make use of futex_waitv. These are two emulator
+    softwares for Windows and will use futex_wiatv in order to be able to easily match
+    Windows' WaitForMultipleObjects system call. This will allow the emulation software
+    to be more efficient.
+
+    https://www.phoronix.com/scan.php?page=news_item&px=FUTEX2-Bits-In-Locking-Core
+    
+    https://www.gamingonlinux.com/2022/01/linux-kernel-516-is-out-now-bringing-the-futex2
+    -work-to-help-linux-gaming/
+
+
+What is the higher-level purpose this software fulfills and (again, at a high level) how 
+does it fulfill it?
+    Wine's larger purpose is to allow users to run Windows targeted applications on linux 
+    machines. It does this by converting system calls from ones that are recognized and
+    designed for windows to system calls that are available on linux. It makes these 
+    adjustments on the fly as the windows application is running. Furthermore, if the 
+    application attempts to do something that is not a simple conversion to another system
+    call Wine will translate that call into a series of steps that Linux can manage first.
+    before preforming the desired tasks. Furthermore, Wine also mimics the filesystem 
+    structure of windows to the application, and also provides the applications with 
+    linux implementations of Windows system libraries.
+
+    https://askubuntu.com/questions/463728/how-does-wine-windows-programme-loader-work-on-ubuntu#:~:text=If%20your%20Windows%20program%20makes,Linux%20can%20deal%20with%20first.
+    
+    https://en.wikipedia.org/wiki/Wine_(software)
+
+   

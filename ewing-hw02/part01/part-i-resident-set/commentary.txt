@@ -1,0 +1,9 @@
+Command to run:
+./maximum-resident > sample-output.txt
+
+In my maximum-resident.c file the global variable TOTAL_BYTES 65536 or 64 kilobytes. 
+which is 16 pages. If you look at the output in sample-output.txt after forcing the
+pages to be resident the number of resident pages and private resident pages increase
+from 15 to 31. This is the expected increase of 16 pages. Furthermore, the forcing to
+be resident is efficiently done as it is copying in only one byte into the first
+byte of every page.

@@ -1,0 +1,4 @@
+Instructions for recreating my output_d_strace.txt:
+
+Run:
+`sudo dtrace -s d_strace.d -c ls > output_d_strace.txt`

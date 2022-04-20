@@ -1,0 +1,52 @@
+my pid is 1474
+Before malloc
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+ 1474           0x400000           0x401000 r-x    1    2   1   0 CN--- vn /usr/home/kewing/shared/ass2/part-i-resident-set/maximum-resident
+ 1474           0x601000           0x602000 rw-    1    1   1   0 ----- df 
+ 1474        0x800601000        0x800607000 r--    6   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x800607000        0x80061e000 r-x   23   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x80061e000        0x80061f000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+ 1474        0x80061f000        0x800642000 rw-   26   26   1   0 ----- df 
+ 1474        0x800643000        0x8006c7000 r--  132  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x8006c7000        0x800819000 r-x  306  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x800819000        0x800823000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x800823000        0x80082a000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x80082a000        0x800a54000 rw-   16   16   1   0 ----- df 
+ 1474        0x800c00000        0x801400000 rw-   15   15   1   0 ----- df 
+ 1474     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+ 1474     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+ 1474     0x7ffffffff000     0x800000000000 r-x    1    1  24   0 ----- ph 
+After malloc but before forcing to be resident
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+ 1474           0x400000           0x401000 r-x    1    2   1   0 CN--- vn /usr/home/kewing/shared/ass2/part-i-resident-set/maximum-resident
+ 1474           0x601000           0x602000 rw-    1    1   1   0 ----- df 
+ 1474        0x800601000        0x800607000 r--    6   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x800607000        0x80061e000 r-x   23   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x80061e000        0x80061f000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+ 1474        0x80061f000        0x800642000 rw-   26   26   1   0 ----- df 
+ 1474        0x800643000        0x8006c7000 r--  132  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x8006c7000        0x800819000 r-x  306  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x800819000        0x800823000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x800823000        0x80082a000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x80082a000        0x800a54000 rw-   16   16   1   0 ----- df 
+ 1474        0x800c00000        0x801400000 rw-   15   15   1   0 ----- df 
+ 1474     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+ 1474     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+ 1474     0x7ffffffff000     0x800000000000 r-x    1    1  24   0 ----- ph 
+After forcing to be resident
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+ 1474           0x400000           0x401000 r-x    1    2   1   0 CN--- vn /usr/home/kewing/shared/ass2/part-i-resident-set/maximum-resident
+ 1474           0x601000           0x602000 rw-    1    1   1   0 ----- df 
+ 1474        0x800601000        0x800607000 r--    6   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x800607000        0x80061e000 r-x   23   29  61   0 CN--- vn /libexec/ld-elf.so.1
+ 1474        0x80061e000        0x80061f000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+ 1474        0x80061f000        0x800642000 rw-   26   26   1   0 ----- df 
+ 1474        0x800643000        0x8006c7000 r--  132  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x8006c7000        0x800819000 r-x  306  464  82   0 CN--- vn /lib/libc.so.7
+ 1474        0x800819000        0x800823000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x800823000        0x80082a000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+ 1474        0x80082a000        0x800a54000 rw-   16   16   1   0 ----- df 
+ 1474        0x800c00000        0x801400000 rw-   31   31   1   0 ----- df 
+ 1474     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+ 1474     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+ 1474     0x7ffffffff000     0x800000000000 r-x    1    1  24   0 ----- ph 

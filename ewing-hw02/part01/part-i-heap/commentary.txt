@@ -1,0 +1,16 @@
+Command to run:
+./wheres-the-heap > sample-output.txt
+
+PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+2770        0x800c00000        0x801400000 rw-   17   17   1   0 ----- df 
+
+The above is the mapping found on lines 15, 33, and 50 is the mapping that contains the 
+heap. We know this for two reasons. First because when we print the pointer to the heap
+at the begging out the program and at the top of sample-output.txt we see that the pointer
+is to the memory location 0x800e13000. This pointer is in the range as specified by the
+example above. Secondly, we also know it is the correct location because after we write
+to the malloc pointer a new page is linked and so the resident page size should increase
+in the mapping that the heap is in. We see this as well. Before the malloc the memory map
+has 15 resident pages and 15 private resident pages. After the malloc the memory map has
+17 resident pages and 17 private resident pages. Therefore the ranges 0x800c00000-
+0x801400000 therefore contain the heap

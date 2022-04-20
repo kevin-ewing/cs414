@@ -1,0 +1,10 @@
+Command to run:
+sudo dtrace -s page-faults.d -c ./page-size > sample-output.txt
+
+The page size is as we would expect 4056 bytes. We know this by setting a large chunk of
+memory to be the null with memset. We can then use the page_faults.d file to find at what
+address was being called that caused the page fault. This is arg1 of every vm_fault_trap:
+entry. By looking through the sample out we can see that a page fault is happening every 
+4056 bytes and thus the page size is 4056. Note that there are some page_faults that happen
+before our malloc page faults but every fault after our malloc pointer of 0x800e09ac0 is
+a page fault that is of 4056 bytes.

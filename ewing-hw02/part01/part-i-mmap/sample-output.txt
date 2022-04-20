@@ -1,0 +1,35 @@
+my pid is 2831
+Before mmap:
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+ 2831           0x400000           0x401000 r-x    1    1   1   0 CN--- vn /usr/home/kewing/shared/ass2/part-i-mmap/whither-mmap
+ 2831           0x600000           0x601000 rw-    1    1   1   0 ----- df 
+ 2831        0x800600000        0x800606000 r--    6   29  58   0 CN--- vn /libexec/ld-elf.so.1
+ 2831        0x800606000        0x80061d000 r-x   23   29  58   0 CN--- vn /libexec/ld-elf.so.1
+ 2831        0x80061d000        0x80061e000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+ 2831        0x80061e000        0x800641000 rw-   25   25   1   0 ----- df 
+ 2831        0x800642000        0x8006c6000 r--  132  496  76   0 CN--- vn /lib/libc.so.7
+ 2831        0x8006c6000        0x800818000 r-x  338  496  76   0 CN--- vn /lib/libc.so.7
+ 2831        0x800818000        0x800822000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+ 2831        0x800822000        0x800829000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+ 2831        0x800829000        0x800a53000 rw-   16   16   1   0 ----- df 
+ 2831        0x800c00000        0x801400000 rw-   15   15   1   0 ----- df 
+ 2831     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+ 2831     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+ 2831     0x7ffffffff000     0x800000000000 r-x    1    1  23   0 ----- ph 
+MMap pointer: 0x800641000 After first mmap:
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+ 2831           0x400000           0x401000 r-x    1    1   1   0 CN--- vn /usr/home/kewing/shared/ass2/part-i-mmap/whither-mmap
+ 2831           0x600000           0x601000 rw-    1    1   1   0 ----- df 
+ 2831        0x800600000        0x800606000 r--    6   29  58   0 CN--- vn /libexec/ld-elf.so.1
+ 2831        0x800606000        0x80061d000 r-x   23   29  58   0 CN--- vn /libexec/ld-elf.so.1
+ 2831        0x80061d000        0x80061e000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+ 2831        0x80061e000        0x800642000 rw-   26   26   1   0 ----- df 
+ 2831        0x800642000        0x8006c6000 r--  132  496  76   0 CN--- vn /lib/libc.so.7
+ 2831        0x8006c6000        0x800818000 r-x  338  496  76   0 CN--- vn /lib/libc.so.7
+ 2831        0x800818000        0x800822000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+ 2831        0x800822000        0x800829000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+ 2831        0x800829000        0x800a53000 rw-   16   16   1   0 ----- df 
+ 2831        0x800c00000        0x801400000 rw-   15   15   1   0 ----- df 
+ 2831     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+ 2831     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+ 2831     0x7ffffffff000     0x800000000000 r-x    1    1  23   0 ----- ph 

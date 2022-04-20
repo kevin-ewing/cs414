@@ -1,0 +1,167 @@
+my pid is 856
+Before malloc
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+  856           0x400000           0x401000 r-x    1    0   1   0 C---- vn /usr/home/kewing/shared/ass2/part-i-swapping/swap-this
+  856           0x601000           0x602000 rw-    1    1   1   0 ----- df 
+  856        0x800601000        0x800607000 r--    6   29  61   0 CN--- vn /libexec/ld-elf.so.1
+  856        0x800607000        0x80061e000 r-x   23    0   1   0 C---- vn /libexec/ld-elf.so.1
+  856        0x80061e000        0x80061f000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+  856        0x80061f000        0x800642000 rw-   26   26   1   0 ----- df 
+  856        0x800643000        0x8006c7000 r--   92  424  80   0 CN--- vn /lib/libc.so.7
+  856        0x8006c7000        0x800819000 r-x  306  424  80   0 CN--- vn /lib/libc.so.7
+  856        0x800819000        0x800823000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+  856        0x800823000        0x80082a000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+  856        0x80082a000        0x800a54000 rw-   16   16   1   0 ----- df 
+  856        0x800c00000        0x801400000 rw-   15   15   1   0 ----- df 
+  856     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+  856     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+  856     0x7ffffffff000     0x800000000000 r-x    1    1  24   0 ----- ph 
+    44438 cpu context switches
+     6679 device interrupts
+     4478 software interrupts
+  1078146 traps
+    93653 system calls
+       23 kernel threads created
+      594  fork() calls
+      217 vfork() calls
+       24 rfork() calls
+        1 swap pager pageins
+        1 swap pager pages paged in
+     2395 swap pager pageouts
+    58886 swap pager pages paged out
+     1740 vnode pager pageins
+    13091 vnode pager pages paged in
+        0 vnode pager pageouts
+        0 vnode pager pages paged out
+        3 page daemon wakeups
+  4021575 pages examined by the page daemon
+       17 clean page reclamation shortfalls
+      373 pages reactivated by the page daemon
+    31820 copy-on-write faults
+       78 copy-on-write optimized faults
+  1033287 zero fill pages zeroed
+        0 zero fill pages prezeroed
+       13 intransit blocking page faults
+  1079830 total VM faults taken
+     1616 page faults requiring I/O
+        0 pages affected by kernel thread creation
+    35794 pages affected by  fork()
+     7589 pages affected by vfork()
+      842 pages affected by rfork()
+  1122544 pages freed
+    57373 pages freed by daemon
+   995144 pages freed by exiting processes
+     6660 pages active
+       25 pages inactive
+       19 pages in the laundry queue
+    43117 pages wired down
+        0 virtual user pages wired down
+   958620 pages free
+     4096 bytes per page
+    49050 total name lookups
+          cache hits (91% pos + 5% neg) system 0% per-directory
+          deletions 0%, falsehits 0%, toolong 0%
+After forcing swapping
+  PID              START                END PRT  RES PRES REF SHD FLAG  TP PATH
+  856           0x400000           0x401000 r-x    1    0   1   0 C---- vn /usr/home/kewing/shared/ass2/part-i-swapping/swap-this
+  856           0x601000           0x602000 rw-    1    1   1   0 ----- df 
+  856        0x800601000        0x800607000 r--    6   29  61   0 CN--- vn /libexec/ld-elf.so.1
+  856        0x800607000        0x80061e000 r-x   23    0   1   0 C---- vn /libexec/ld-elf.so.1
+  856        0x80061e000        0x80061f000 r--    1    0   1   0 C---- vn /libexec/ld-elf.so.1
+  856        0x80061f000        0x800642000 rw-   26   26   1   0 ----- df 
+  856        0x800643000        0x8006c7000 r--   92  424  80   0 CN--- vn /lib/libc.so.7
+  856        0x8006c7000        0x800819000 r-x  306  424  80   0 CN--- vn /lib/libc.so.7
+  856        0x800819000        0x800823000 r--   10    0   1   0 C---- vn /lib/libc.so.7
+  856        0x800823000        0x80082a000 rw-    7    0   1   0 C---- vn /lib/libc.so.7
+  856        0x80082a000        0x800a54000 rw-   16   16   1   0 ----- df 
+  856        0x800c00000        0x941c00000 rw- 948727 948727   1   0 --S-- sw 
+  856     0x7fffdffff000     0x7ffffffdf000 ---    0    0   0   0 ----- -- 
+  856     0x7ffffffdf000     0x7ffffffff000 rw-    4    4   1   0 ---D- df 
+  856     0x7ffffffff000     0x800000000000 r-x    1    1  24   0 ----- ph 
+    56735 cpu context switches
+     8563 device interrupts
+     6350 software interrupts
+  2055424 traps
+    94426 system calls
+       23 kernel threads created
+      594  fork() calls
+      219 vfork() calls
+       24 rfork() calls
+        1 swap pager pageins
+        1 swap pager pages paged in
+     4264 swap pager pageouts
+    92124 swap pager pages paged out
+     1740 vnode pager pageins
+    13091 vnode pager pages paged in
+        0 vnode pager pageouts
+        0 vnode pager pages paged out
+        4 page daemon wakeups
+  7934019 pages examined by the page daemon
+       22 clean page reclamation shortfalls
+      410 pages reactivated by the page daemon
+    31939 copy-on-write faults
+       78 copy-on-write optimized faults
+  2010288 zero fill pages zeroed
+       57 zero fill pages prezeroed
+       13 intransit blocking page faults
+  2056954 total VM faults taken
+     1616 page faults requiring I/O
+        0 pages affected by kernel thread creation
+    35794 pages affected by  fork()
+     7655 pages affected by vfork()
+      842 pages affected by rfork()
+  1160386 pages freed
+    88807 pages freed by daemon
+   995676 pages freed by exiting processes
+   790434 pages active
+     1664 pages inactive
+   159731 pages in the laundry queue
+    45084 pages wired down
+        0 virtual user pages wired down
+    12016 pages free
+     4096 bytes per page
+    49218 total name lookups
+          cache hits (91% pos + 5% neg) system 0% per-directory
+          deletions 0%, falsehits 0%, toolong 0%
+
+
+           value  ------------- Distribution ------------- count    
+               2 |                                         0        
+               4 |                                         48       
+               8 |                                         0        
+              16 |                                         0        
+              32 |                                         0        
+              64 |                                         0        
+             128 |                                         0        
+             256 |                                         0        
+             512 |                                         1        
+            1024 |                                         133      
+            2048 |                                         70       
+            4096 |@                                        32735    
+            8192 |                                         6690     
+           16384 |                                         424      
+           32768 |                                         166      
+           65536 |                                         112      
+          131072 |                                         140      
+          262144 |                                         44       
+          524288 |                                         29       
+         1048576 |                                         6        
+         2097152 |                                         5        
+         4194304 |                                         0        
+         8388608 |                                         1        
+        16777216 |                                         0        
+        33554432 |                                         0        
+        67108864 |                                         0        
+       134217728 |                                         0        
+       268435456 |                                         0        
+       536870912 |                                         0        
+      1073741824 |                                         0        
+      2147483648 |                                         0        
+      4294967296 |                                         0        
+      8589934592 |                                         0        
+     17179869184 |                                         0        
+     34359738368 |                                         0        
+     68719476736 |                                         0        
+    137438953472 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   935979   
+    274877906944 |                                         0        
+
