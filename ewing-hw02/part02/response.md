@@ -16,7 +16,23 @@ The `system-oomd` deamon only will poll cgroups in which the out of memory deamo
 The processes aer killed based on memory/swap pressure also known as the pressure stall information (PSI). This PSI tool was created by Facebook and is the first "canonical way to see resource pressure increases as they develop, with new pressure metrics for three major resources—memory, CPU, and IO." (https://facebookmicrosites.github.io/psi/docs/overview 
 ). This PSI metric allows you to detect real time resource shortages.
 
-The PSI is determined by how long tasks are delayed because there is a lack of resources. If a single task has to wait due to a lack of memory then its `some` score is increased. However the system's `full` metric is increased when all tasks are delayed by a lack of resources. Therefore, the "`full` number indicates a loss of overall throughput – the total amount of work done decreases due to lack of resources."
+The PSI is determined by how long tasks are delayed because there is a lack of resources. This PSI is measured by monitoring three catagories of system pressure: CPU, I/O and memory. 
+
+First I will discuss CPU pressure. Within the `proc/pressure/cpu` file there are four fields, `avg10`, `avg60` and `avg300` and `total`. The `avg*` fields represent the percentage of time in the last 10, 60 and 300 seconds respectively that processes were starved of CPU. The `total` field represents the total time in microseconds that processes were starved for CPU. 
+
+Next is how memory is determined. Within the `proc/pressure/memory` file there are two lines: the `some` and `full` metrics. If a single task has to wait due to a lack of memory then its `some` score is increased. In other words the `some` tracks the percentage of the time that at least one process could be running if it weren't waiting for memory resources. "In particular, the time spent for swapping in, refaulting pages from the page cache, and performing direct reclaim is tracked in this way." However the system's `full` metric is increased when all tasks are delayed by a lack of resources. Therefore, the "`full` number indicates a loss of overall throughput – the total amount of work done decreases due to lack of resources." Again, put differently `full` tracks the time that no user process is able to use the CPU for actual work due to memory pressure. "If the `full` numbers are much above zero, it's clear that the system lacks the memory it needs to support the current workload."
+
+The `proc/pressure/io` file is how IO pressure is determined. This file tracks the time lost waiting for I/O.
+
+Finally `proc/pressure` "tracks the state of the system as a whole... [It] can be used to ensure that the resource limits for each cgroup make sense; they should also make it easier to determine which processes are thrashing on a busy system."
+
+
+Please let this be enough information on how PSI is determined. If you would like me to get more technical I am happy to and would love to meet with you after the due date.
+
+
+https://lwn.net/Articles/759781/
+
+https://unixism.net/2019/08/linux-pressure-stall-information-psi-by-example/
 
 https://facebookmicrosites.github.io/psi/docs/overview 
 

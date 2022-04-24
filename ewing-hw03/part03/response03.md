@@ -29,4 +29,4 @@ Similarly, ADM greatly beats out normal software schedulers due to its ability t
 Out of all the parallel tasks, ADM performs worst as compared to Carbon in the `mergesort` algorithm. The paper claims that ADM struggles due to the tree-style parallelization of the algorithm. Where only a few threads are generating new tasks and those are needed to be redistributed ASAP. These characteristics best suite the speed of encoding the scheduler in hardware: ie. the Carbon scheduler.
 
 ### How important is caching though?!
-What...
+Caching is crucial. As the paper puts it "The latency of a cache line transfer in CMPs with 64 or 128 cores is close to a hundred cycles, so a few such transfers can negate the benefits of parallel execution of fine-grain tasks." Meaning, all of these schedulers are working to be as efficient as possible to manage threads while maintaining effective cache hierarchies. As, if there are even as few as a couple cache misses then all of the scheduler benefits may be undone.
